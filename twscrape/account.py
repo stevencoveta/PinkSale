@@ -25,8 +25,8 @@ class Account(JSONTrait):
     cookies: dict[str, str] = field(default_factory=dict)
     proxy: Optional[str] = None
     error_msg: Optional[str] = None
-    last_used: datetime | None = None
-    _tx: str | None = None
+    last_used: Optional[datetime] = None
+    _tx: Optional[str] = None
 
     @staticmethod
     def from_rs(rs: sqlite3.Row):
