@@ -3,3 +3,4 @@ datetime
 requests
 numpy
 streamlit
+smart_open
