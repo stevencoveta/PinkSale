@@ -1,12 +1,8 @@
 asyncio
-#twscrape == 0.9.0
 pandas
 datetime
 requests
 numpy
 streamlit
-aiosqlite>=0.17.0
-fake-useragent>=1.3.0
-httpx>=0.24.0
-loguru>=0.7.0
 python_version >= "3.10"
+boto3
