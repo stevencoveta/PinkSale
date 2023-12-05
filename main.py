@@ -66,6 +66,7 @@ if st.session_state.is_authenticated:
     df = fetch_and_process_data(bucket_name, object_key)
 
     df = df.drop('Unnamed: 0', axis = 1)
+    print(df)
 
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
     #df.to_csv('pinksale.csv')
