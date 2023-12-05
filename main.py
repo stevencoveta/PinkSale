@@ -12,7 +12,7 @@ def authenticate(password):
 
 @st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
 def load_data(path, aws_access, aws_secret):
-    data = pd.read_csv(smart_open(path, aws_access_key_id=aws_access, aws_secret_access_key=aws_secret), index_col=0)
+    data = pd.read_csv(smart_open(path, aws_access, aws_secret), index_col=0)
     return data
 
 
