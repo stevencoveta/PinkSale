@@ -8,6 +8,7 @@ from httpx import AsyncClient, AsyncHTTPTransport
 from .constants import TOKEN
 from .models import JSONTrait
 from .utils import utc
+from typing import Optional
 
 
 @dataclass
@@ -22,8 +23,8 @@ class Account(JSONTrait):
     stats: dict[str, int] = field(default_factory=dict)  # queue: requests
     headers: dict[str, str] = field(default_factory=dict)
     cookies: dict[str, str] = field(default_factory=dict)
-    proxy: str | None = None
-    error_msg: str | None = None
+    proxy: Optional[str] = None
+    error_msg: Optional[str] = None
     last_used: datetime | None = None
     _tx: str | None = None
 
