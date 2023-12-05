@@ -68,7 +68,7 @@ class AccountsPool:
         password: str,
         email: str,
         email_password: str,
-        user_agent: str | None = None,
+        user_agent: Optional[str] = None,
         proxy: str | None = None,
         cookies: str | None = None,
     ):
