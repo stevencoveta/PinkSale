@@ -64,7 +64,8 @@ def _wait_email_code(imap: imaplib.IMAP4_SSL, count: int, min_t: Optional[dateti
 
 
 async def imap_get_email_code(
-    imap: imaplib.IMAP4_SSL, email: str, min_t: datetime | None = None
+    imap: imaplib.IMAP4_SSL, email: str, min_t: Optional[datetime] = None
+
 ) -> str:
     try:
         start_time, was_count = time.time(), 0
