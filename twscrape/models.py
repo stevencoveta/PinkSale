@@ -113,7 +113,7 @@ class User(JSONTrait):
     profileImageUrl: str
     profileBannerUrl: Optional[str] = None
     protected: Optional[bool] = None
-    verified: bool | None = None
+    verified: Optional[bool] = None
     blue: bool | None = None
     blueType: str | None = None
     descriptionLinks: list[TextLink] = field(default_factory=list)
