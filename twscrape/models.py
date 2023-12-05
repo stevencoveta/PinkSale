@@ -116,7 +116,7 @@ class User(JSONTrait):
     protected: Optional[bool] = None
     verified: Optional[bool] = None
     blue: Union[bool, None] = None
-    blueType: str | None = None
+    blueType: Union[str, None] = None
     descriptionLinks: list[TextLink] = field(default_factory=list)
     _type: str = "snscrape.modules.twitter.User"
 
