@@ -99,7 +99,7 @@ class AccountsPool:
         await self.save(account)
         logger.info(f"Account {username} added successfully (active={account.active})")
 
-    async def delete_accounts(self, usernames: str | list[str]):
+    async def delete_accounts(self, usernames: (str, list[str])):
         usernames = usernames if isinstance(usernames, list) else [usernames]
         usernames = list(set(usernames))
         if not usernames:
