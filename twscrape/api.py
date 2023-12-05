@@ -52,7 +52,8 @@ class API:
 
     # gql helpers
 
-    async def _gql_items(self, op: str, kv: dict, ft: dict | None = None, limit=-1):
+    async def _gql_items(self, op: str, kv: dict, ft: Optional[dict] = None, limit: int = -1):
+
         queue, cursor, count, active = op.split("/")[-1], None, 0, True
         kv, ft = {**kv}, {**GQL_FEATURES, **(ft or {})}
 
