@@ -121,7 +121,7 @@ class DB:
 
 
 @lock_retry()
-async def execute(db_path: str, qs: str, params: dict | None = None):
+async def execute(db_path: str, qs: str, params: dict = None):
     async with DB(db_path) as db:
         await db.execute(qs, params)
 
