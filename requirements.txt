@@ -4,5 +4,4 @@ datetime
 requests
 numpy
 streamlit
-python_version >= "3.10"
 boto3
