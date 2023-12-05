@@ -5,6 +5,7 @@ from collections import defaultdict
 import aiosqlite
 
 from .logger import logger
+from typing import Optional
 
 MIN_SQLITE_VERSION = "3.24"
 
@@ -135,7 +136,7 @@ async def fetchone(db_path: str, qs: str, params: dict = None):
 
 
 @lock_retry()
-async def fetchall(db_path: str, qs: str, params: dict = None):
+async def fetchall(db_path: str, qs: str, params: Optional[dict] = None):
     async with DB(db_path) as db:
         async with db.execute(qs, params) as cur:
             rows = await cur.fetchall()
