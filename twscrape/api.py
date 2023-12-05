@@ -7,8 +7,7 @@ from .logger import set_log_level
 from .models import parse_tweet, parse_tweets, parse_user, parse_users
 from .queue_client import QueueClient
 from .utils import encode_params, find_obj, get_by_path
-from typing import Union
-from typing import Optional
+from typing import Optional, Union
 
 # Note: kv is variables, ft is features from original GQL request
 
