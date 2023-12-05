@@ -6,26 +6,17 @@ import pandas as pd
 import boto3
 from botocore.exceptions import NoCredentialsError
 import asyncio
+from smart_open import smart_open
+
 
 @st.cache_data
 def authenticate(password):
     return password == '1234'
 
-#@st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
-def fetch_and_process_data(bucket_name, object_key):
-    # Create an S3 client
-    s3 = boto3.client('s3')
-
-    try:
-        # Read the CSV file from S3 into a Pandas DataFrame
-        obj = s3.get_object(Bucket=bucket_name, Key=object_key)
-        df = pd.read_csv(obj['Body'])
-        print(df)
-        return df
-
-    except NoCredentialsError:
-        print("Credentials not available")
-        return None
+@st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
+def fetch_and_process_data(path):
+    data = pd.read_csv(smart_open(path),index_col=0)
+    return data
 
 # Initialize session state
 if 'is_authenticated' not in st.session_state:
@@ -63,11 +54,10 @@ if st.session_state.is_authenticated:
     bucket_name = 'pinksales3'
     object_key = 'pinksale.csv'
 
-    df = fetch_and_process_data(bucket_name, object_key)
+    path = 's3://{}/{}'.format(bucket_name, object_key)
 
-    df = df.drop('Unnamed: 0', axis = 1)
-    print(df)
-
+    df = fetch_and_process_data(path)
+    
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
     #df.to_csv('pinksale.csv')
 

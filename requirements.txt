@@ -3,4 +3,3 @@ datetime
 requests
 numpy
 streamlit
-boto3
