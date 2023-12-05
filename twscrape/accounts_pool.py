@@ -69,8 +69,9 @@ class AccountsPool:
         email: str,
         email_password: str,
         user_agent: Optional[str] = None,
-        proxy: str | None = None,
-        cookies: str | None = None,
+        proxy: Optional[str] = None,
+        cookies: Optional[str] = None,
+
     ):
         qs = "SELECT * FROM accounts WHERE username = :username"
         rs = await fetchone(self._db_file, qs, {"username": username})
