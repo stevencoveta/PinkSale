@@ -461,7 +461,7 @@ def parse_users(rep: httpx.Response, limit: int = -1) -> Generator[User, None, N
     return _parse_items(rep, "user", limit)  # type: ignore
 
 
-def parse_tweet(rep: httpx.Response, twid: int) -> Tweet | None:
+def parse_tweet(rep: httpx.Response, twid: int) -> Optional[Tweet]:
     try:
         docs = list(parse_tweets(rep))
         for x in docs:
