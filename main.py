@@ -20,6 +20,7 @@ def fetch_and_process_data(bucket_name, object_key):
         # Read the CSV file from S3 into a Pandas DataFrame
         obj = s3.get_object(Bucket=bucket_name, Key=object_key)
         df = pd.read_csv(obj['Body'])
+        print(df)
         return df
 
     except NoCredentialsError:
@@ -64,10 +65,10 @@ if st.session_state.is_authenticated:
 
     df = fetch_and_process_data(bucket_name, object_key)
 
-    #df = df.drop('Unnamed: 0', axis = 1)
+    df = df.drop('Unnamed: 0', axis = 1)
 
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
-    df.to_csv('pinksale.csv')
+    #df.to_csv('pinksale.csv')
 
     # Read the DataFrame
     #df = pd.read_csv('/Users/steven/nap/pink_proj/pink_sale_data.csv')
