@@ -13,12 +13,13 @@ from .logger import logger
 from .login import login
 from .utils import parse_cookies, utc
 
+from typing import Optional
 
 class AccountInfo(TypedDict):
     username: str
     logged_in: bool
     active: bool
-    last_used: datetime | None
+    last_used: Optional[datetime] = None
     total_req: int
     error_msg: str | None
 
