@@ -169,7 +169,7 @@ class Tweet(JSONTrait):
     cashtags: list[str]
     mentionedUsers: list[UserRef]
     links: list[TextLink]
-    viewCount: int | None = None
+    viewCount: Union[int, None] = None
     retweetedTweet: Optional["Tweet"] = None
     quotedTweet: Optional["Tweet"] = None
     place: Optional[Place] = None
