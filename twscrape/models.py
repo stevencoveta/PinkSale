@@ -112,7 +112,7 @@ class User(JSONTrait):
     location: str
     profileImageUrl: str
     profileBannerUrl: Optional[str] = None
-    protected: bool | None = None
+    protected: Optional[bool] = None
     verified: bool | None = None
     blue: bool | None = None
     blueType: str | None = None
