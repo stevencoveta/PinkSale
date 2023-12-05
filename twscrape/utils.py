@@ -2,8 +2,7 @@ import base64
 import json
 from collections import defaultdict
 from datetime import datetime, timezone
-from typing import Any, AsyncGenerator, Callable, TypeVar
-from typing import Union
+from typing import Any, AsyncGenerator, Callable, TypeVar, Union
 
 from httpx import HTTPStatusError, Response
 
@@ -61,7 +60,7 @@ def get_or(obj: dict, key: str, default_value: T = None) -> Union[Any, T]:
     return obj
 
 
-def int_or(obj: dict, key: str, default_value: int | None = None):
+def int_or(obj: dict, key: str, default_value: Union[int, None] = None):
     try:
         val = get_or(obj, key)
         return int(val) if val is not None else default_value
