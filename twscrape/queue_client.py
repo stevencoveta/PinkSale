@@ -7,8 +7,10 @@ import httpx
 from .accounts_pool import Account, AccountsPool
 from .logger import logger
 from .utils import utc
+from typing import Union
 
-ReqParams = (dict[str, str | int]) | None
+ReqParams = Union[dict[str, Union[str, int]], None]
+
 TMP_TS = utc.now().isoformat().split(".")[0].replace("T", "_").replace(":", "-")[0:16]
 
 
