@@ -64,7 +64,7 @@ class Place(JSONTrait):
 @dataclass
 class TextLink(JSONTrait):
     url: str
-    text: str | None
+    text: Optional[str]
     tcourl: str | None
 
     @staticmethod
