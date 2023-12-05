@@ -3,6 +3,7 @@ import json
 from collections import defaultdict
 from datetime import datetime, timezone
 from typing import Any, AsyncGenerator, Callable, TypeVar
+from typing import Union
 
 from httpx import HTTPStatusError, Response
 
@@ -52,7 +53,7 @@ def encode_params(obj: dict):
     return res
 
 
-def get_or(obj: dict, key: str, default_value: T = None) -> Any | T:
+def get_or(obj: dict, key: str, default_value: T = None) -> Union[Any, T]:
     for part in key.split("."):
         if part not in obj:
             return default_value
