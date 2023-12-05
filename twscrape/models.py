@@ -11,6 +11,7 @@ from typing import Generator, Optional
 
 import httpx
 from typing import Optional
+from typing import Union
 
 from .logger import logger
 from .utils import find_item, get_or, int_or, to_old_rep, utc
@@ -114,7 +115,7 @@ class User(JSONTrait):
     profileBannerUrl: Optional[str] = None
     protected: Optional[bool] = None
     verified: Optional[bool] = None
-    blue: bool | None = None
+    blue: Union[bool, None] = None
     blueType: str | None = None
     descriptionLinks: list[TextLink] = field(default_factory=list)
     _type: str = "snscrape.modules.twitter.User"
