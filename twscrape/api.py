@@ -8,6 +8,7 @@ from .models import parse_tweet, parse_tweets, parse_user, parse_users
 from .queue_client import QueueClient
 from .utils import encode_params, find_obj, get_by_path
 from typing import Union
+from typing import Optional
 
 # Note: kv is variables, ft is features from original GQL request
 
@@ -34,7 +35,7 @@ class API:
 
     # general helpers
 
-    def _is_end(self, rep: Response, q: str, res: list, cur: str | None, cnt: int, lim: int):
+    def _is_end(self, rep: Response, q: str, res: list, cur: Optional[str], cnt: int, lim: int):
         new_count = len(res)
         new_total = cnt + new_count
 
