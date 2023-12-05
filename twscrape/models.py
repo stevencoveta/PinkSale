@@ -177,8 +177,8 @@ class Tweet(JSONTrait):
     inReplyToTweetId: Optional[int] = None
     inReplyToUser: Optional[UserRef] = None
     source: Optional[str] = None
-    sourceUrl: str | None = None
-    sourceLabel: str | None = None
+    sourceUrl: Optional[str] = None
+    sourceLabel: Optional[str] = None
     media: Optional["Media"] = None
     _type: str = "snscrape.modules.twitter.Tweet"
 
