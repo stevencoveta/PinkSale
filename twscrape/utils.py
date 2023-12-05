@@ -152,7 +152,11 @@ def to_old_rep(obj: dict) -> dict[str, dict]:
     tw2 = [x["tweet"] for x in tmp.get("TweetWithVisibilityResults", []) if "legacy" in x["tweet"]]
     tw2 = {str(x["rest_id"]): to_old_obj(x) for x in tw2}
 
-    users = [x for x in tmp.get("User", []) if "legacy" in x
+    users = [x for x in tmp.get("User", []) if "legacy" in x and "id" in x]
+    users = {str(x["rest_id"]): to_old_obj(x) for x in users}
+
+    return {"tweets": {**tw1, **tw2}, "users": users}
+
 
 def print_table(rows: list[dict], hr_after=False):
     if not rows:
