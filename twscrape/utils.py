@@ -3,6 +3,7 @@ import json
 from collections import defaultdict
 from datetime import datetime, timezone
 from typing import Any, AsyncGenerator, Callable, TypeVar, Union
+from typing import Optional
 
 from httpx import HTTPStatusError, Response
 
@@ -98,7 +99,8 @@ def find_or_fail(lst: list[T], fn: Callable[[T], bool]) -> T:
     return item
 
 
-def find_obj(obj: dict, fn: Callable[[dict], bool]) -> Any | None:
+
+def find_obj(obj: dict, fn: Callable[[dict], bool]) -> Optional[Any]:
     if not isinstance(obj, dict):
         return None
 
@@ -115,7 +117,6 @@ def find_obj(obj: dict, fn: Callable[[dict], bool]) -> Any | None:
                     return res
 
     return None
-
 
 def get_typed_object(obj: dict, res: defaultdict[str, list]):
     obj_type = obj.get("__typename", None)
