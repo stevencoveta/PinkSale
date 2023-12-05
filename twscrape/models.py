@@ -66,7 +66,7 @@ class Place(JSONTrait):
 class TextLink(JSONTrait):
     url: str
     text: Optional[str]
-    tcourl: str | None
+    tcourl: Optional[str]
 
     @staticmethod
     def parse(obj: dict):
