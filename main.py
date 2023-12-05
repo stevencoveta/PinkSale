@@ -11,8 +11,8 @@ def authenticate(password):
     return password == '1234'
 
 @st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
-def load_data(path, aws_access_key_id, aws_secret_access_key):
-    data = pd.read_csv(smart_open(path, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key), index_col=0)
+def load_data(path, aws_access, aws_secret):
+    data = pd.read_csv(smart_open(path, aws_access_key_id=aws_access, aws_secret_access_key=aws_secret), index_col=0)
     return data
 
 
@@ -51,12 +51,12 @@ if st.session_state.is_authenticated:
     # Call the function and retrieve the processed data
     bucket_name = 'pinksales3'
     object_key = 'pinksale.csv'
-    aws_access_key_id = st.secrets["aws_acces"]
-    aws_secret_access_key = st.secrets["aws_secret"]
+    aws_access = st.secrets["aws_acces"]
+    aws_secret = st.secrets["aws_secret"]
 
     path = 's3://{}/{}'.format(bucket_name, object_key)
 
-    df = load_data(path, aws_access_key_id, aws_secret_access_key)
+    df = load_data(path, aws_access, aws_secret
 
 
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
