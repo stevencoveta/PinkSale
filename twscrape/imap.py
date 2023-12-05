@@ -3,6 +3,7 @@ import email as emaillib
 import imaplib
 import time
 from datetime import datetime
+from typing import Optional
 
 from .logger import logger
 
@@ -40,7 +41,7 @@ def _get_imap_domain(email: str) -> str:
     return f"imap.{email_domain}"
 
 
-def _wait_email_code(imap: imaplib.IMAP4_SSL, count: int, min_t: datetime | None) -> str | None:
+def _wait_email_code(imap: imaplib.IMAP4_SSL, count: int, min_t: Optional[datetime] = None) -> Optional[str]:
     for i in range(count, 0, -1):
         _, rep = imap.fetch(str(i), "(RFC822)")
         for x in rep:
