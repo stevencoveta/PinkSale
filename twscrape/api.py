@@ -51,7 +51,7 @@ class API:
 
     # gql helpers
 
-    async def _gql_item(self, op: str, kv: dict, ft: Optional[dict] = None):
+    async def _gql_item(self, op: str, kv: dict, ft: Union[dict, None] = None):
 
 
 
