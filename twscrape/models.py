@@ -262,7 +262,7 @@ class MediaVideo(JSONTrait):
     thumbnailUrl: str
     variants: list["MediaVideoVariant"]
     duration: int
-    views: int | None = None
+    views: Optional[int] = None
 
     @staticmethod
     def parse(obj: dict):
