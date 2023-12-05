@@ -57,7 +57,7 @@ if st.session_state.is_authenticated:
     path = 's3://{}/{}'.format(bucket_name, object_key)
 
     df = fetch_and_process_data(path)
-    
+
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
     #df.to_csv('pinksale.csv')
 
@@ -65,6 +65,7 @@ if st.session_state.is_authenticated:
     #df = pd.read_csv('/Users/steven/nap/pink_proj/pink_sale_data.csv')
 
     now = datetime.now()
+    print(df)
     df['Startdate'] = pd.to_datetime(df['Startdate'], errors='coerce')
 
     # Filter conditions for dates
