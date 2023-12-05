@@ -21,7 +21,8 @@ class AccountInfo(TypedDict):
     active: bool
     last_used: Optional[datetime] = None
     total_req: int
-    error_msg: str | None
+    error_msg: Optional[str] = None
+
 
 
 def guess_delim(line: str):
