@@ -85,13 +85,11 @@ def get_by_path(obj: dict, key: str, default=None):
             stack.pop()
     return default
 
-
-def find_item(lst: list[T], fn: Callable[[T], bool]) -> T | None:
+def find_item(lst: list[T], fn: Callable[[T], bool]) -> Union[T, None]:
     for item in lst:
         if fn(item):
             return item
     return None
-
 
 def find_or_fail(lst: list[T], fn: Callable[[T], bool]) -> T:
     item = find_item(lst, fn)
