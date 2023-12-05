@@ -2,9 +2,7 @@ import base64
 import json
 from collections import defaultdict
 from datetime import datetime, timezone
-from typing import Any, AsyncGenerator, Callable, TypeVar, Union
-from typing import Optional
-
+from typing import Any, AsyncGenerator, Callable, TypeVar, Optional, Union
 from httpx import HTTPStatusError, Response
 
 from .logger import logger
@@ -61,7 +59,7 @@ def get_or(obj: dict, key: str, default_value: T = None) -> Union[Any, T]:
     return obj
 
 
-def int_or(obj: dict, key: str, default_value: Union[int, None] = None):
+def int_or(obj: dict, key: str, default_value: Optional[int] = None):
     try:
         val = get_or(obj, key)
         return int(val) if val is not None else default_value
@@ -154,11 +152,7 @@ def to_old_rep(obj: dict) -> dict[str, dict]:
     tw2 = [x["tweet"] for x in tmp.get("TweetWithVisibilityResults", []) if "legacy" in x["tweet"]]
     tw2 = {str(x["rest_id"]): to_old_obj(x) for x in tw2}
 
-    users = [x for x in tmp.get("User", []) if "legacy" in x and "id" in x]
-    users = {str(x["rest_id"]): to_old_obj(x) for x in users}
-
-    return {"tweets": {**tw1, **tw2}, "users": users}
-
+    users = [x for x in tmp.get("User", []) if "legacy" in x
 
 def print_table(rows: list[dict], hr_after=False):
     if not rows:
