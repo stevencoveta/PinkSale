@@ -56,7 +56,7 @@ if st.session_state.is_authenticated:
 
     path = 's3://{}/{}'.format(bucket_name, object_key)
 
-    df = load_data(path, aws_access, aws_secret
+    df = load_data(path, aws_access, aws_secret)
 
 
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
