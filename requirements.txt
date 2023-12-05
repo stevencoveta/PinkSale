@@ -4,4 +4,4 @@ datetime
 requests
 numpy
 streamlit
-boto3
+boto3==1.33.7
