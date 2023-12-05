@@ -111,7 +111,7 @@ class User(JSONTrait):
     mediaCount: int
     location: str
     profileImageUrl: str
-    profileBannerUrl: str | None = None
+    profileBannerUrl: Optional[str] = None
     protected: bool | None = None
     verified: bool | None = None
     blue: bool | None = None
