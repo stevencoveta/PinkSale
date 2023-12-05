@@ -473,7 +473,7 @@ def parse_tweet(rep: httpx.Response, twid: int) -> Optional[Tweet]:
         return None
 
 
-def parse_user(rep: httpx.Response) -> User | None:
+def parse_user(rep: httpx.Response) -> Optional[User]:
     try:
         docs = list(parse_users(rep))
         if len(docs) == 1:
