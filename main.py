@@ -11,7 +11,7 @@ import asyncio
 def authenticate(password):
     return password == '1234'
 
-@st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
+#@st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
 def fetch_and_process_data(bucket_name, object_key):
     # Create an S3 client
     s3 = boto3.client('s3')
