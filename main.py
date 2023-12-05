@@ -3,9 +3,6 @@ import pandas as pd
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-import boto3
-from botocore.exceptions import NoCredentialsError
-import asyncio
 from smart_open import smart_open
 
 
