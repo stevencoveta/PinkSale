@@ -175,7 +175,7 @@ class Tweet(JSONTrait):
     place: Optional[Place] = None
     coordinates: Optional[Coordinates] = None
     inReplyToTweetId: Optional[int] = None
-    inReplyToUser: UserRef | None = None
+    inReplyToUser: Optional[UserRef] = None
     source: str | None = None
     sourceUrl: str | None = None
     sourceLabel: str | None = None
