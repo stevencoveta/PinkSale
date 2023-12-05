@@ -10,6 +10,7 @@ from datetime import datetime
 from typing import Generator, Optional
 
 import httpx
+from typing import Optional
 
 from .logger import logger
 from .utils import find_item, get_or, int_or, to_old_rep, utc
