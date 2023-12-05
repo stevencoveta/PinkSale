@@ -67,7 +67,7 @@ class PinkSaleData:
         df_all.twitter_usernames = df_all.twitter_usernames.astype(str)
         #print(df_all.twitter_usernames)
         df_all.twitter_usernames = df_all.twitter_usernames.str.lower()
-
+        df_all = df_all.iloc[:3]
         tweets_df = []
         for i in df_all.twitter_usernames:
             tweets_df.append(asyncio.run(main(i)))
