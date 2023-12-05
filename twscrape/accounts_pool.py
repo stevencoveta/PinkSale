@@ -160,7 +160,7 @@ class AccountsPool:
             counter["success" if status else "failed"] += 1
         return counter
 
-    async def relogin(self, usernames: str | list[str], email_first=False):
+    async def relogin(self, usernames: (str, list[str]), email_first=False):
         usernames = usernames if isinstance(usernames, list) else [usernames]
         usernames = list(set(usernames))
         if not usernames:
