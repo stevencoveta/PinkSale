@@ -48,14 +48,14 @@ Create a `.env` file in the project root directory with your AWS credentials:
 ```env
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
-BUCKET_NAME=your_bucket_name
+BUCKET_NAME=pinksales3
 
 ### 4. Streamlit Application
 
 - Use a cron job to run every day download_data_2_s3.py file
 - Use Streamlit to visualize and interact with the data. Run the application using the following command:
   
-  ```bash
-  python3.10 download_data_2_s3.py
+ 
+python3.10 download_data_2_s3.py
 
-  streamlit run main.py
+streamlit run main.py

@@ -10,11 +10,10 @@ from smart_open import smart_open
 def authenticate(password):
     return password == '1234'
 
-@st.cache_data(ttl=10000)  # Time-to-live set to 24 hours (86400 seconds)
+@st.cache_data(ttl=10000)  
 def load_data_with_credentials(path):
     data = pd.read_csv(smart_open(path), index_col=0)
     return data
-
 
 
 # Initialize session state
@@ -61,16 +60,10 @@ if st.session_state.is_authenticated:
 
     df = load_data_with_credentials(s3_url_with_credentials)
 
-
-
     df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
-    #df.to_csv('pinksale.csv')
-
-    # Read the DataFrame
-    #df = pd.read_csv('/Users/steven/nap/pink_proj/pink_sale_data.csv')
 
     now = datetime.now()
-    print(df)
+
     df['Endate'] = pd.to_datetime(df['Endate'], errors='coerce')
 
     # Filter conditions for dates
@@ -149,7 +142,7 @@ if st.session_state.is_authenticated:
                           'Fundraising Event Impact',
                           'Whitelist and Affiliate Influence'
 
-                          ]   # Add your column names here
+                          ]  
 
     # Allow the user to select multiple columns with predefined values
     selected_columns = st.sidebar.multiselect('Select Columns', df.columns, default=predefined_columns)

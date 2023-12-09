@@ -33,8 +33,7 @@ csv_path = 'pinksale.csv'  # Path to your local CSV file
 url = 'https://pinksale-trending.s3.ap-northeast-1.amazonaws.com/active.json'
 
 # Call the function and retrieve the processed data
-#df = fetch_and_process_data(url)
-df = pd.read_csv( '/Users/steven/nap/Scraping/pinksale.csv')
+df = fetch_and_process_data(url)
 df.twitter_last_tweet = df.twitter_last_tweet.astype(str)
 df['Relative Engagement Metrics'] = ((df.twitter_mean_rt_post + df.twitter_mean_like + df.twitter_replied_count) / df.twitter_followers_count).fillna(0)
 df['Interactive Engagement Ratio'] = (df.twitter_replied_count / (df.twitter_mean_rt_post + df.twitter_mean_like)).fillna(0)
@@ -51,12 +50,6 @@ df['Fundraising Event Impact'] = (df.formattedTotalRaised / (df.twitter_mean_rt_
 df['hasUrl'] = df['whitelistApprobationLink'].fillna('').str.contains(r'https?://\S+').astype(int)
 df['Whitelist and Affiliate Influence'] = (df.twitter_mean_rt_post*df.twitter_mean_like*df.twitter_mean_view) * df.affiliateBps + df.hasUrl
 
-df.to_csv(csv_path, index=False)
-
-# Read the CSV file into a DataFrame
-df = pd.read_csv(csv_path)
-
-# Convert DataFrame to CSV format in memory
 csv_buffer = StringIO()
 df.to_csv(csv_buffer, index=False)
 csv_data = csv_buffer.getvalue()

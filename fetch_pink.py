@@ -5,13 +5,13 @@ import json
 from fetch_tweets import main
 import asyncio
 import time
+
 class PinkSaleData:
     def __init__(self, url):
         self.url = url
         self.headers = {
             'Accept': 'application/json, text/plain, */*',
             'Accept-Language': 'en-GB,en;q=0.9,en-US;q=0.8,es;q=0.7,fr;q=0.6',
-            # Add other headers as needed
         }
         self.response = self.fetch_data()
 
