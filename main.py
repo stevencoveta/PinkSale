@@ -71,15 +71,15 @@ if st.session_state.is_authenticated:
 
     now = datetime.now()
     print(df)
-    df['Startdate'] = pd.to_datetime(df['Startdate'], errors='coerce')
+    df['Endate'] = pd.to_datetime(df['Endate'], errors='coerce')
 
     # Filter conditions for dates
-    live_dates = df['Startdate'] <= now
+    live_dates = df['Endate'] <= now
     today = now.date()
-    today_dates = df['Startdate'].dt.date == today
+    today_dates = df['Endate'].dt.date == today
     tomorrow = today + timedelta(days=1)
-    tomorrow_dates = df['Startdate'].dt.date == tomorrow
-    future_dates = df['Startdate'] > np.datetime64(tomorrow)
+    tomorrow_dates = df['Endate'].dt.date == tomorrow
+    future_dates = df['Endate'] > np.datetime64(tomorrow)
 
     # Additional filter based on dates
     date_filter = st.sidebar.selectbox('Date Filter', ['All', 'Live', 'Today', 'Tomorrow', 'Future'])
