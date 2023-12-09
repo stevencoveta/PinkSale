@@ -10,7 +10,7 @@ from smart_open import smart_open
 def authenticate(password):
     return password == '1234'
 
-@st.cache_data(ttl=86400)  # Time-to-live set to 24 hours (86400 seconds)
+@st.cache_data(ttl=10000)  # Time-to-live set to 24 hours (86400 seconds)
 def load_data_with_credentials(path):
     data = pd.read_csv(smart_open(path), index_col=0)
     return data
