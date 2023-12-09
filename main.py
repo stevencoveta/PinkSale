@@ -138,7 +138,18 @@ if st.session_state.is_authenticated:
 
   
     # Allow user to select multiple columns
-    predefined_columns = ['name', 'telegramMemberCount']  # Add your column names here
+    predefined_columns = ['name', 
+                          'Relative Engagement Metrics',
+                          'Interactive Engagement Ratio',
+                          'Recent Engagement Trend',
+                          'Temporal Engagement Analysis',
+                          'Cross-Platform Engagement Index',
+                          'Telegram Engagement Percentage',
+                          'Compliance and Sentiment Impact',
+                          'Fundraising Event Impact',
+                          'Whitelist and Affiliate Influence'
+
+                          ]   # Add your column names here
 
     # Allow the user to select multiple columns with predefined values
     selected_columns = st.sidebar.multiselect('Select Columns', df.columns, default=predefined_columns)
