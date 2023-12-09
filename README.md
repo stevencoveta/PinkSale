@@ -41,15 +41,21 @@ This project aims to identify potentially lucrative "gem" tokens by scraping dat
 
 - Set up configuration files for PinkSale and Twitter API credentials. Ensure proper authentication to access data from these platforms.
 
-### 3. Execution
+### 3. AWS Credentials
 
-- Run the PinkSale scraper to gather information about upcoming token launches.
-- Run the Twitter scraper to collect tweets related to the identified tokens.
-- Execute data analysis scripts to identify potential gem tokens based on predefined criteria.
+Create a `.env` file in the project root directory with your AWS credentials:
+
+```env
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+BUCKET_NAME=your_bucket_name
 
 ### 4. Streamlit Application
 
+- Use a cron job to run every day download_data_2_s3.py file
 - Use Streamlit to visualize and interact with the data. Run the application using the following command:
   
   ```bash
+  python3.10 download_data_2_s3.py
+
   streamlit run main.py

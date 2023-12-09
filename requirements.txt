@@ -4,3 +4,4 @@ requests
 numpy
 streamlit
 smart_open[s3]
+twscrape
